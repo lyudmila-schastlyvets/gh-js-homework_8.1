@@ -68,7 +68,42 @@ article, aside, details, figcaption, figure, footer, header, hgroup, main, menu,
 }
 
 /* line 8, ../sass/main.scss */
-#hello {
-  margin: 0 auto;
+* {
+  box-sizing: border-box;
+}
+
+/* line 12, ../sass/main.scss */
+#box {
+  margin: 10px auto;
+  width: 100%;
   background: url("../images/image.jpg") no-repeat;
+  background-size: contain;
+  border: 1px solid green;
+}
+
+/* line 20, ../sass/main.scss */
+.item {
+  display: flex;
+  z-index: 1;
+}
+
+/* line 25, ../sass/main.scss */
+.title, .delete-item {
+  display: inline-block;
+  padding: 5px;
+  background-color: green;
+  border: 1px solid green;
+  border-radius: 2px;
+  color: white;
+}
+
+/* line 35, ../sass/main.scss */
+.title:hover {
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+
+/* line 42, ../sass/main.scss */
+.delete-item:hover {
+  cursor: pointer;
 }

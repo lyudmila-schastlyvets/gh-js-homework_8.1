@@ -5,7 +5,41 @@
 
 @import "compass/reset";
 
-#hello{
-  margin: 0 auto;
+* {
+  box-sizing: border-box;
+}
+
+#box{
+  margin: 10px auto;
+  width: 100%;
   background: url('../images/image.jpg') no-repeat;
+  background-size: contain;
+  border: 1px solid green;
+}
+
+.item {
+  display: flex;
+  z-index: 1;
+}
+
+.title, .delete-item {
+  display: inline-block;
+  padding: 5px;
+  background-color: green;
+  border: 1px solid green;
+  border-radius: 2px;
+  color: white;
+}
+
+.title {
+  &:hover {
+    cursor: -webkit-grab;
+    cursor: grab;
+  }
+}
+
+.delete-item {
+  &:hover {
+    cursor: pointer;
+  }
 }

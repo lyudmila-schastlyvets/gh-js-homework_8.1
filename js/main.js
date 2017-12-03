@@ -1,5 +1,5 @@
 window.onload = function() {
-    var elem = document.getElementById('hello');
+    var elem = document.getElementById('box');
 
     var imageSrc = window
         .getComputedStyle(elem, null)
@@ -14,6 +14,16 @@ window.onload = function() {
         heightElem = image.height;
 
     elem.style.height = heightElem + 'px';
-    elem.style.width = widthElem + 'px';
+    elem.style.maxWidth = widthElem + 'px';
 
 };
+
+document.getElementById('box').addEventListener("click", function(event){
+    var test = event.target;
+    if (test.className == 'delete-item') {
+        test
+            .parentNode
+            .parentNode
+            .removeChild(test.parentNode);
+    }
+}, false);
