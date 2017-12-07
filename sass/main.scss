@@ -3,13 +3,12 @@
  * Import this file using the following HTML or equivalent:
  * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
 
-@import "compass/reset";
-
 * {
   box-sizing: border-box;
 }
 
 #box{
+  position: relative;
   margin: 10px auto;
   width: 100%;
   background: url('../images/image.jpg') no-repeat;
@@ -17,7 +16,8 @@
   border: 1px solid green;
 }
 
-.item {
+#item {
+  position: absolute;
   display: flex;
   z-index: 1;
 }
