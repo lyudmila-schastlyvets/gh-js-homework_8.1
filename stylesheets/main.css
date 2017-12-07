@@ -18,7 +18,7 @@
 }
 
 /* line 19, ../sass/main.scss */
-#item {
+.item {
   position: absolute;
   display: flex;
   z-index: 1;
@@ -28,7 +28,7 @@
 .title, .delete-item {
   display: inline-block;
   padding: 5px;
-  background-color: green;
+  background-color: rgba(93, 255, 71, 0.9);
   border: 1px solid green;
   border-radius: 2px;
   color: white;
@@ -43,4 +43,14 @@
 /* line 42, ../sass/main.scss */
 .delete-item:hover {
   cursor: pointer;
+}
+
+/* line 47, ../sass/main.scss */
+ul {
+  margin: 0;
+  padding: 0;
+}
+/* line 50, ../sass/main.scss */
+ul li {
+  list-style: none;
 }

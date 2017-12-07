@@ -13,7 +13,7 @@
   background-size: contain;
   border: 1px solid green; }
 
-#item {
+.item {
   position: absolute;
   display: flex;
   z-index: 1; }
@@ -21,7 +21,7 @@
 .title, .delete-item {
   display: inline-block;
   padding: 5px;
-  background-color: green;
+  background-color: rgba(93, 255, 71, 0.9);
   border: 1px solid green;
   border-radius: 2px;
   color: white; }
@@ -32,5 +32,11 @@
 
 .delete-item:hover {
   cursor: pointer; }
+
+ul {
+  margin: 0;
+  padding: 0; }
+  ul li {
+    list-style: none; }
 
 /*# sourceMappingURL=main.css.map */

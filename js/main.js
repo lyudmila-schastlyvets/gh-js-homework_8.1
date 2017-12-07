@@ -66,17 +66,18 @@ var mydragg = function(){
             var a = document.createElement('script');
             document.getElementById(container).style.cursor='default';
             document.onmousemove = function(){}
-        },
+        }
     }
 }();
 
-document.getElementById('item').addEventListener('mousedown', function(event) {
-    mydragg.startMoving(this,"box",event);
+Array.prototype.forEach.call(document.getElementsByClassName('item'), function(el) {
+    el.addEventListener('mousedown', function(event) {
+        mydragg.startMoving(this, 'box', event);
+    });
 });
 
-document.getElementById('item').addEventListener('mouseup', function() {
-    mydragg.stopMoving("box");
+Array.prototype.forEach.call(document.getElementsByClassName('item'), function(el) {
+    el.addEventListener('mouseup', function() {
+        mydragg.stopMoving('box');
+    });
 });
-
-console.dir(document.getElementById('box'));
-
