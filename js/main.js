@@ -30,21 +30,21 @@ document.getElementById('box').addEventListener("click", function(event){
 
 var mydragg = function(){
     return {
-        move : function(divid,xpos,ypos){
+        move: function(divid, xpos, ypos){
             divid.style.left = xpos + 'px';
             divid.style.top = ypos + 'px';
         },
-        startMoving : function(divid,container,evt){
+        startMoving: function(divid, container, evt){
             evt = evt || window.event;
-            var posX = evt.clientX,
-                posY = evt.clientY,
+            var posX = evt.clientX || evt.touches[0].clientX,
+                posY = evt.clientY || evt.touches[0].clientY,
                 divTop = divid.style.top,
                 divLeft = divid.style.left,
                 eWi = parseInt(divid.clientWidth),
                 eHe = parseInt(divid.clientHeight),
                 cWi = parseInt(document.getElementById(container).clientWidth),
                 cHe = parseInt(document.getElementById(container).clientHeight);
-            document.getElementById(container).style.cursor='move';
+            document.getElementById(container).style.cursor = 'move';
             divTop = divTop.replace('px','');
             divLeft = divLeft.replace('px','');
             var diffX = posX - divLeft,
@@ -59,12 +59,24 @@ var mydragg = function(){
                 if (aY < 0) aY = 0;
                 if (aX + eWi > cWi) aX = cWi - eWi;
                 if (aY + eHe > cHe) aY = cHe -eHe;
+                mydragg.move(divid, aX, aY);
+            };
+            document.ontouchmove = function(evt){
+                evt = evt || window.event;
+                console.dir(evt.touches[0].clientX);
+                var posX = evt.touches[0].clientX,
+                    posY = evt.touches[0].clientY,
+                    aX = posX - diffX,
+                    aY = posY - diffY;
+                if (aX < 0) aX = 0;
+                if (aY < 0) aY = 0;
+                if (aX + eWi > cWi) aX = cWi - eWi;
+                if (aY + eHe > cHe) aY = cHe - eHe;
                 mydragg.move(divid,aX,aY);
             }
         },
         stopMoving : function(container){
-            var a = document.createElement('script');
-            document.getElementById(container).style.cursor='default';
+            document.getElementById(container).style.cursor = 'default';
             document.onmousemove = function(){}
         }
     }
