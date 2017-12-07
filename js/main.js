@@ -36,16 +36,14 @@ var mydragg = function(){
         },
         startMoving : function(divid,container,evt){
             evt = evt || window.event;
-            console.log(divid.style.top);
             var posX = evt.clientX,
                 posY = evt.clientY,
                 divTop = divid.style.top,
                 divLeft = divid.style.left,
-                eWi = parseInt(divid.style.width),
-                eHe = parseInt(divid.style.height),
-                cWi = parseInt(document.getElementById(container).style.width),
-                cHe = parseInt(document.getElementById(container).style.height);
-            console.log(divid.style.top);
+                eWi = parseInt(divid.clientWidth),
+                eHe = parseInt(divid.clientHeight),
+                cWi = parseInt(document.getElementById(container).clientWidth),
+                cHe = parseInt(document.getElementById(container).clientHeight);
             document.getElementById(container).style.cursor='move';
             divTop = divTop.replace('px','');
             divLeft = divLeft.replace('px','');
