@@ -19,12 +19,18 @@ window.onload = function() {
 };
 
 document.getElementById('box').addEventListener("click", function(event){
-    var test = event.target;
-    if (test.className == 'delete-item') {
-        test
+    var targetElement = event.target;
+    if (targetElement.classList.contains('delete-item')) {
+        targetElement
             .parentNode
             .parentNode
-            .removeChild(test.parentNode);
+            .removeChild(targetElement.parentNode);
+    }
+    console.log(document.getElementsByClassName('active').length)
+    if (!targetElement.parentElement.classList.contains('active') && document.getElementsByClassName('active').length > 0) {
+        Array.prototype.forEach.call(document.getElementsByClassName('item'), function(el) {
+            el.children[1].classList.remove('show');
+        });
     }
 }, false);
 
@@ -45,6 +51,12 @@ var mydragg = function(){
                 cWi = parseInt(document.getElementById(container).clientWidth),
                 cHe = parseInt(document.getElementById(container).clientHeight);
             document.getElementById(container).style.cursor = 'move';
+            Array.prototype.forEach.call(document.getElementsByClassName('item'), function (el) {
+                el.classList.remove('active');
+                el.children[1].classList.remove('show');
+            });
+            divid.classList.add('active');
+            divid.children[1].className = 'delete-item show';
             divTop = divTop.replace('px','');
             divLeft = divLeft.replace('px','');
             var diffX = posX - divLeft,
@@ -63,7 +75,6 @@ var mydragg = function(){
             };
             document.ontouchmove = function(evt){
                 evt = evt || window.event;
-                console.dir(evt.touches[0].clientX);
                 var posX = evt.touches[0].clientX,
                     posY = evt.touches[0].clientY,
                     aX = posX - diffX,
@@ -77,7 +88,7 @@ var mydragg = function(){
         },
         stopMoving : function(container){
             document.getElementById(container).style.cursor = 'default';
-            document.onmousemove = function(){}
+            document.onmousemove = function(){};
         }
     }
 }();
@@ -93,9 +104,9 @@ Array.prototype.forEach.call(document.getElementsByClassName('item'), function(e
 
 Array.prototype.forEach.call(document.getElementsByClassName('item'), function(el) {
     el.addEventListener('mouseup', function() {
-        mydragg.stopMoving('box');
+        mydragg.stopMoving('box', el);
     });
     el.addEventListener('touchend', function() {
-        mydragg.stopMoving('box');
+        mydragg.stopMoving('box', el);
     });
 });

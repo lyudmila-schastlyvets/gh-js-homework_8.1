@@ -32,6 +32,7 @@
 }
 
 .title {
+  white-space: nowrap;
   &:hover {
     cursor: -webkit-grab;
     cursor: grab;
@@ -39,6 +40,10 @@
 }
 
 .delete-item {
+  visibility: hidden;
+  &.show {
+    visibility: visible;
+  }
   &:hover {
     cursor: pointer;
   }

@@ -26,12 +26,18 @@
   border-radius: 2px;
   color: white; }
 
-.title:hover {
-  cursor: -webkit-grab;
-  cursor: grab; }
+.title {
+  white-space: nowrap; }
+  .title:hover {
+    cursor: -webkit-grab;
+    cursor: grab; }
 
-.delete-item:hover {
-  cursor: pointer; }
+.delete-item {
+  visibility: hidden; }
+  .delete-item.show {
+    visibility: visible; }
+  .delete-item:hover {
+    cursor: pointer; }
 
 ul {
   margin: 0;

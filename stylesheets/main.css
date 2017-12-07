@@ -34,23 +34,35 @@
   color: white;
 }
 
-/* line 35, ../sass/main.scss */
+/* line 34, ../sass/main.scss */
+.title {
+  white-space: nowrap;
+}
+/* line 36, ../sass/main.scss */
 .title:hover {
   cursor: -webkit-grab;
   cursor: grab;
 }
 
 /* line 42, ../sass/main.scss */
+.delete-item {
+  visibility: hidden;
+}
+/* line 44, ../sass/main.scss */
+.delete-item.show {
+  visibility: visible;
+}
+/* line 47, ../sass/main.scss */
 .delete-item:hover {
   cursor: pointer;
 }
 
-/* line 47, ../sass/main.scss */
+/* line 52, ../sass/main.scss */
 ul {
   margin: 0;
   padding: 0;
 }
-/* line 50, ../sass/main.scss */
+/* line 55, ../sass/main.scss */
 ul li {
   list-style: none;
 }
