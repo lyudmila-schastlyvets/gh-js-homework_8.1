@@ -74,10 +74,16 @@ Array.prototype.forEach.call(document.getElementsByClassName('item'), function(e
     el.addEventListener('mousedown', function(event) {
         mydragg.startMoving(this, 'box', event);
     });
+    el.addEventListener('touchstart', function(event) {
+        mydragg.startMoving(this, 'box', event);
+    });
 });
 
 Array.prototype.forEach.call(document.getElementsByClassName('item'), function(el) {
     el.addEventListener('mouseup', function() {
+        mydragg.stopMoving('box');
+    });
+    el.addEventListener('touchend', function() {
         mydragg.stopMoving('box');
     });
 });
