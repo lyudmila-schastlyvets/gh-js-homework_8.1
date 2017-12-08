@@ -26,7 +26,6 @@
 
 /* line 25, ../sass/main.scss */
 .title, .delete-item {
-  display: inline-block;
   padding: 5px;
   background-color: rgba(93, 255, 71, 0.9);
   border: 1px solid green;
@@ -34,8 +33,9 @@
   color: white;
 }
 
-/* line 34, ../sass/main.scss */
+/* line 33, ../sass/main.scss */
 .title {
+  display: inline-block;
   white-space: nowrap;
 }
 /* line 36, ../sass/main.scss */
@@ -46,25 +46,31 @@
 
 /* line 42, ../sass/main.scss */
 .delete-item {
+  position: relative;
   visibility: hidden;
 }
-/* line 44, ../sass/main.scss */
+/* line 46, ../sass/main.scss */
 .delete-item.show {
   visibility: visible;
 }
-/* line 47, ../sass/main.scss */
+/* line 50, ../sass/main.scss */
+.delete-item.position-left {
+  position: absolute;
+  right: 100%;
+}
+/* line 54, ../sass/main.scss */
 .delete-item:hover {
   cursor: pointer;
 }
 
-/* line 52, ../sass/main.scss */
+/* line 59, ../sass/main.scss */
 ul {
   margin: 0;
   padding: 0;
   width: 100%;
   height: 100%;
 }
-/* line 57, ../sass/main.scss */
+/* line 64, ../sass/main.scss */
 ul li {
   list-style: none;
 }

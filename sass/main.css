@@ -19,7 +19,6 @@
   z-index: 1; }
 
 .title, .delete-item {
-  display: inline-block;
   padding: 5px;
   background-color: rgba(93, 255, 71, 0.9);
   border: 1px solid green;
@@ -27,15 +26,20 @@
   color: white; }
 
 .title {
+  display: inline-block;
   white-space: nowrap; }
   .title:hover {
     cursor: -webkit-grab;
     cursor: grab; }
 
 .delete-item {
+  position: relative;
   visibility: hidden; }
   .delete-item.show {
     visibility: visible; }
+  .delete-item.position-left {
+    position: absolute;
+    right: 100%; }
   .delete-item:hover {
     cursor: pointer; }
 

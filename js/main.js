@@ -53,6 +53,8 @@ var mydragg = function(){
                 eHe = parseInt(divid.clientHeight),
                 cWi = parseInt(document.getElementById(container).clientWidth),
                 cHe = parseInt(document.getElementById(container).clientHeight);
+            console.log('EWidth ', eWi);
+            console.log('EHeight ', eHe);
             document.getElementById(container).style.cursor = 'move';
             Array.prototype.forEach.call(document.getElementsByClassName('item'), function (el) {
                 el.classList.remove('active');
@@ -72,8 +74,16 @@ var mydragg = function(){
                     aY = posY - diffY;
                 if (aX < 0) aX = 0;
                 if (aY < 0) aY = 0;
-                if (aX + eWi > cWi) aX = cWi - eWi;
+                if (aX + eWi > cWi) {
+                    aX = cWi - eWi;
+                    divid.children[1].classList.add('position-left');
+                    aX +=23.56;
+                } else
+                    if (divid.children[1].classList.contains('position-left')) {
+                        divid.children[1].classList.remove('position-left');
+                    }
                 if (aY + eHe > cHe) aY = cHe - eHe;
+                console.log('aX',aX, 'eWi',eWi,'cWi',cWi);
                 mydragg.move(divid, aX, aY);
             };
             document.ontouchmove = function(evt){
@@ -104,7 +114,7 @@ var mydragg = function(){
             newElement.appendChild(spanIcon);
             spanTitle.setAttribute('class', 'title');
             spanTitle.innerText = 'Test';
-            spanIcon.setAttribute('class', 'delete-item show');
+            spanIcon.setAttribute('class', 'delete-item');
             spanIcon.innerText = 'X';
         }
     }

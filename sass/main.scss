@@ -23,7 +23,6 @@
 }
 
 .title, .delete-item {
-  display: inline-block;
   padding: 5px;
   background-color: rgba(93, 255, 71, 0.9);
   border: 1px solid green;
@@ -32,6 +31,7 @@
 }
 
 .title {
+  display: inline-block;
   white-space: nowrap;
   &:hover {
     cursor: -webkit-grab;
@@ -40,9 +40,16 @@
 }
 
 .delete-item {
+  position: relative;
   visibility: hidden;
+
   &.show {
     visibility: visible;
+  }
+
+  &.position-left {
+    position: absolute;
+    right: 100%;
   }
   &:hover {
     cursor: pointer;
