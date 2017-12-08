@@ -53,8 +53,6 @@ var mydragg = function(){
                 eHe = parseInt(divid.clientHeight),
                 cWi = parseInt(document.getElementById(container).clientWidth),
                 cHe = parseInt(document.getElementById(container).clientHeight);
-            console.log('EWidth ', eWi);
-            console.log('EHeight ', eHe);
             document.getElementById(container).style.cursor = 'move';
             Array.prototype.forEach.call(document.getElementsByClassName('item'), function (el) {
                 el.classList.remove('active');
@@ -83,7 +81,6 @@ var mydragg = function(){
                         divid.children[1].classList.remove('position-left');
                     }
                 if (aY + eHe > cHe) aY = cHe - eHe;
-                console.log('aX',aX, 'eWi',eWi,'cWi',cWi);
                 mydragg.move(divid, aX, aY);
             };
             document.ontouchmove = function(evt){
@@ -94,7 +91,14 @@ var mydragg = function(){
                     aY = posY - diffY;
                 if (aX < 0) aX = 0;
                 if (aY < 0) aY = 0;
-                if (aX + eWi > cWi) aX = cWi - eWi;
+                if (aX + eWi > cWi) {
+                    aX = cWi - eWi;
+                    divid.children[1].classList.add('position-left');
+                    aX +=23.56;
+                } else
+                    if (divid.children[1].classList.contains('position-left')) {
+                        divid.children[1].classList.remove('position-left');
+                    }
                 if (aY + eHe > cHe) aY = cHe - eHe;
                 mydragg.move(divid, aX, aY);
             }
@@ -109,31 +113,42 @@ var mydragg = function(){
                 spanTitle = document.createElement('span'),
                 spanIcon = document.createElement('span');
             newElement.setAttribute('class', 'item');
+            newElement.setAttribute('style', 'left: 0; top:0;');
             elem.appendChild(newElement);
             newElement.appendChild(spanTitle);
             newElement.appendChild(spanIcon);
             spanTitle.setAttribute('class', 'title');
             spanTitle.innerText = 'Test';
-            spanIcon.setAttribute('class', 'delete-item');
+            spanIcon.setAttribute('class', 'delete-item show');
             spanIcon.innerText = 'X';
         }
     }
 }();
 
-Array.prototype.forEach.call(document.getElementsByClassName('item'), function(el) {
-    el.addEventListener('mousedown', function(event) {
-        mydragg.startMoving(this, 'box', event);
-    });
-    el.addEventListener('touchstart', function(event) {
-        mydragg.startMoving(this, 'box', event);
-    });
-});
+document.getElementById('box').addEventListener('mousedown', function(event){
+    var targetElement = event.target.parentNode;
+    if (targetElement.classList.contains('item')) {
+        mydragg.startMoving(targetElement, 'box', event);
+    }
+}, false);
 
-Array.prototype.forEach.call(document.getElementsByClassName('item'), function(el) {
-    el.addEventListener('mouseup', function() {
-        mydragg.stopMoving('box', el);
-    });
-    el.addEventListener('touchend', function() {
-        mydragg.stopMoving('box', el);
-    });
-});
+document.getElementById('box').addEventListener('touchstart', function(event){
+    var targetElement = event.target.parentNode;
+    if (targetElement.classList.contains('item')) {
+        mydragg.startMoving(targetElement, 'box', event);
+    }
+}, false);
+
+document.getElementById('box').addEventListener('mouseup', function(event){
+    var targetElement = event.target.parentNode;
+    if (targetElement.classList.contains('item')) {
+        mydragg.stopMoving('box', targetElement);
+    }
+}, false);
+
+document.getElementById('box').addEventListener('touchend', function(event){
+    var targetElement = event.target.parentNode;
+    if (targetElement.classList.contains('item')) {
+        mydragg.stopMoving('box', targetElement);
+    }
+}, false);
