@@ -3,8 +3,8 @@ window.onload = function() {
 
     var imageSrc = window
         .getComputedStyle(elem, null)
-        .getPropertyValue("background-image")
-        .replace(/url\((['"])?(.*?)\1\)/gi, '    $2')
+        .getPropertyValue('background-image')
+        .replace(/url\((['"])?(.*?)\1\)/gi, '$2')
         .split(',')[0];
 
     var image = new Image();
@@ -18,7 +18,7 @@ window.onload = function() {
 
 };
 
-document.getElementById('box').addEventListener("click", function(event){
+document.getElementById('box').addEventListener('click', function(event){
     var targetElement = event.target;
     if (targetElement.classList.contains('delete-item')) {
         targetElement
@@ -26,11 +26,14 @@ document.getElementById('box').addEventListener("click", function(event){
             .parentNode
             .removeChild(targetElement.parentNode);
     }
-    console.log(document.getElementsByClassName('active').length)
-    if (!targetElement.parentElement.classList.contains('active') && document.getElementsByClassName('active').length > 0) {
+    if (!targetElement.parentElement.classList.contains('active')
+        && document.getElementsByClassName('active').length > 0) {
         Array.prototype.forEach.call(document.getElementsByClassName('item'), function(el) {
             el.children[1].classList.remove('show');
         });
+    }
+    if (targetElement.localName == 'ul' && !targetElement.classList.contains('item')) {
+        mydragg.createItem(targetElement);
     }
 }, false);
 
@@ -56,7 +59,7 @@ var mydragg = function(){
                 el.children[1].classList.remove('show');
             });
             divid.classList.add('active');
-            divid.children[1].className = 'delete-item show';
+            divid.children[1].classList.add('show');
             divTop = divTop.replace('px','');
             divLeft = divLeft.replace('px','');
             var diffX = posX - divLeft,
@@ -70,7 +73,7 @@ var mydragg = function(){
                 if (aX < 0) aX = 0;
                 if (aY < 0) aY = 0;
                 if (aX + eWi > cWi) aX = cWi - eWi;
-                if (aY + eHe > cHe) aY = cHe -eHe;
+                if (aY + eHe > cHe) aY = cHe - eHe;
                 mydragg.move(divid, aX, aY);
             };
             document.ontouchmove = function(evt){
@@ -83,12 +86,26 @@ var mydragg = function(){
                 if (aY < 0) aY = 0;
                 if (aX + eWi > cWi) aX = cWi - eWi;
                 if (aY + eHe > cHe) aY = cHe - eHe;
-                mydragg.move(divid,aX,aY);
+                mydragg.move(divid, aX, aY);
             }
         },
         stopMoving : function(container){
             document.getElementById(container).style.cursor = 'default';
             document.onmousemove = function(){};
+        },
+
+        createItem : function (elem) {
+            var newElement = document.createElement('li'),
+                spanTitle = document.createElement('span'),
+                spanIcon = document.createElement('span');
+            newElement.setAttribute('class', 'item');
+            elem.appendChild(newElement);
+            newElement.appendChild(spanTitle);
+            newElement.appendChild(spanIcon);
+            spanTitle.setAttribute('class', 'title');
+            spanTitle.innerText = 'Test';
+            spanIcon.setAttribute('class', 'delete-item show');
+            spanIcon.innerText = 'X';
         }
     }
 }();

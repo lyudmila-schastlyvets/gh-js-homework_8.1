@@ -61,8 +61,10 @@
 ul {
   margin: 0;
   padding: 0;
+  width: 100%;
+  height: 100%;
 }
-/* line 55, ../sass/main.scss */
+/* line 57, ../sass/main.scss */
 ul li {
   list-style: none;
 }
