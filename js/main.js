@@ -116,7 +116,7 @@ var mydragg = function(){
                 spanTitle = document.createElement('span'),
                 spanIcon = document.createElement('span');
             newElement.setAttribute('class', 'item');
-            newElement.setAttribute('style', 'left: ' + leftPos + 'px; top:' + topPos +' px;');
+            newElement.setAttribute('style', 'left: ' + leftPos + 'px; top: ' + topPos +'px;');
             elem.appendChild(newElement);
             newElement.appendChild(spanTitle);
             newElement.appendChild(spanIcon);
