@@ -35,6 +35,9 @@ document.getElementById('box').addEventListener('click', function(event){
     if (targetElement.localName == 'ul' && !targetElement.classList.contains('item')) {
         var topPos = event.layerY;
         var leftPos = event.layerX;
+        Array.prototype.forEach.call(document.getElementsByClassName('item'), function(el) {
+            el.children[1].classList.remove('show');
+        });
         mydragg.createItem(targetElement, topPos, leftPos);
     }
 }, false);
