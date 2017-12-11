@@ -119,7 +119,25 @@ var mydragg = function(){
             newElement.appendChild(spanTitle);
             newElement.appendChild(spanIcon);
             spanTitle.setAttribute('class', 'title');
-            spanTitle.innerText = 'Test';
+            var randNumber = Math.floor(Math.random() * 10);
+            var text;
+            switch (randNumber) {
+                case 1:
+                    text = 'Lorem Ipsum';
+                    break;
+                case 2:
+                    text = 'Lorem';
+                    break;
+                case 3:
+                    text = 'Lorem Ipsum Dolor';
+                    break;
+                case 4:
+                    text = 'Dolor';
+                    break;
+                default:
+                    text = 'Test';
+            }
+            spanTitle.innerText = text;
             spanIcon.setAttribute('class', 'delete-item show');
             spanIcon.innerText = 'X';
             var elW = newElement.clientWidth / 2;
