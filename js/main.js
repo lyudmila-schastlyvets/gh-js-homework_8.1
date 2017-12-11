@@ -79,9 +79,9 @@ var mydragg = function(){
                     divid.children[1].classList.add('position-left');
                     aX +=23.56;
                 } else
-                    if (divid.children[1].classList.contains('position-left')) {
-                        divid.children[1].classList.remove('position-left');
-                    }
+                if (divid.children[1].classList.contains('position-left')) {
+                    divid.children[1].classList.remove('position-left');
+                }
                 if (aY + eHe > cHe) aY = cHe - eHe;
                 mydragg.move(divid, aX, aY);
             };
@@ -98,9 +98,9 @@ var mydragg = function(){
                     divid.children[1].classList.add('position-left');
                     aX +=23.56;
                 } else
-                    if (divid.children[1].classList.contains('position-left')) {
-                        divid.children[1].classList.remove('position-left');
-                    }
+                if (divid.children[1].classList.contains('position-left')) {
+                    divid.children[1].classList.remove('position-left');
+                }
                 if (aY + eHe > cHe) aY = cHe - eHe;
                 mydragg.move(divid, aX, aY);
             }

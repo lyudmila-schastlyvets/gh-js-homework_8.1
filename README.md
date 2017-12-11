@@ -26,4 +26,8 @@ Node.js
 
 ### Technologies Used
 
+<<<<<<< HEAD
 React, JavaScript, CSS, HTML5.
+=======
+React, JavaScript, CSS, HTML5.
+>>>>>>> 811aecf6aaba8e61dbc982e0407e41353ad71d0a
