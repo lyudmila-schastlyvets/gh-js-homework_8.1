@@ -33,7 +33,9 @@ document.getElementById('box').addEventListener('click', function(event){
         });
     }
     if (targetElement.localName == 'ul' && !targetElement.classList.contains('item')) {
-        mydragg.createItem(targetElement);
+        var topPos = event.layerY;
+        var leftPos = event.layerX;
+        mydragg.createItem(targetElement, topPos, leftPos);
     }
 }, false);
 
@@ -108,12 +110,13 @@ var mydragg = function(){
             document.onmousemove = function(){};
         },
 
-        createItem : function (elem) {
+        createItem : function (elem, topPos, leftPos) {
+            console.log(elem, topPos, leftPos);
             var newElement = document.createElement('li'),
                 spanTitle = document.createElement('span'),
                 spanIcon = document.createElement('span');
             newElement.setAttribute('class', 'item');
-            newElement.setAttribute('style', 'left: 0; top:0;');
+            newElement.setAttribute('style', 'left: ' + leftPos + 'px; top:' + topPos +' px;');
             elem.appendChild(newElement);
             newElement.appendChild(spanTitle);
             newElement.appendChild(spanIcon);
