@@ -111,19 +111,22 @@ var mydragg = function(){
         },
 
         createItem : function (elem, topPos, leftPos) {
-            console.log(elem, topPos, leftPos);
             var newElement = document.createElement('li'),
                 spanTitle = document.createElement('span'),
                 spanIcon = document.createElement('span');
-            newElement.setAttribute('class', 'item');
-            newElement.setAttribute('style', 'left: ' + leftPos + 'px; top: ' + topPos +'px;');
             elem.appendChild(newElement);
+            newElement.setAttribute('class', 'item');
             newElement.appendChild(spanTitle);
             newElement.appendChild(spanIcon);
             spanTitle.setAttribute('class', 'title');
             spanTitle.innerText = 'Test';
             spanIcon.setAttribute('class', 'delete-item show');
             spanIcon.innerText = 'X';
+            var elW = newElement.clientWidth / 2;
+            var elH = newElement.clientHeight / 2;
+            leftPos = leftPos - elW;
+            topPos = topPos - elH;
+            newElement.setAttribute('style', 'left: ' + leftPos + 'px; top: ' + topPos +'px;');
         }
     }
 }();
